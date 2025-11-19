@@ -1,0 +1,38 @@
+{% extends 'miapp/base.html' %}
+
+{% block title %}Inicio - Biblioteca{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="mb-4">🏛️ Sistema de Gestión de Biblioteca</h1>
+        <p class="lead">Bienvenido al sistema de gestión de biblioteca</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card text-bg-primary mb-4">
+                    <div class="card-body">
+                        <h2>{{ total_autores }}</h2>
+                        <p>Autores Registrados</p>
+                        <a href="{% url 'miapp:lista_autores' %}" class="btn btn-light">Ver Autores</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-bg-success mb-4">
+                    <div class="card-body">
+                        <h2>{{ total_libros }}</h2>
+                        <p>Libros Registrados</p>
+                        <a href="{% url 'miapp:lista_libros' %}" class="btn btn-light">Ver Libros</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'miapp:crear_autor' %}" class="btn btn-outline-primary me-2">Agregar Nuevo Autor</a>
+            <a href="{% url 'miapp:crear_libro' %}" class="btn btn-outline-success">Agregar Nuevo Libro</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

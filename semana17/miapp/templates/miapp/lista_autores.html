@@ -1,0 +1,43 @@
+{% extends 'miapp/base.html' %}
+
+{% block title %}Lista de Autores{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📝 Lista de Autores</h1>
+    <a href="{% url 'miapp:crear_autor' %}" class="btn btn-primary">➕ Nuevo Autor</a>
+</div>
+
+{% if autores %}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha Nacimiento</th>
+                <th>Nacionalidad</th>
+                <th>Libros Publicados</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in autores %}
+            <tr>
+                <td>{{ autor.nombre }}</td>
+                <td>{{ autor.apellido }}</td>
+                <td>{{ autor.fecha_nacimiento }}</td>
+                <td>{{ autor.nacionalidad }}</td>
+                <td><span class="badge bg-secondary">{{ autor.libros.count }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-warning text-center">
+    <h4>No hay autores registrados</h4>
+    <p>Comienza agregando el primer autor al sistema.</p>
+    <a href="{% url 'miapp:crear_autor' %}" class="btn btn-primary">Agregar Primer Autor</a>
+</div>
+{% endif %}
+{% endblock %}
